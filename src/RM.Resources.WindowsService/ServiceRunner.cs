@@ -68,8 +68,7 @@ namespace RM.Resources.WindowsService
                 runAction(hostConfiguration);
                 if (innerConfig.Action == ActionEnum.Run || innerConfig.Action == ActionEnum.RunInteractive)
                 {
-                    var controller = new MicroServiceController(
-                        () =>
+                    var controller = new MicroServiceController(() =>
                         {
                             var task = Task.Factory.StartNew(() =>
                             {
