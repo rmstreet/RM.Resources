@@ -7,7 +7,6 @@ namespace RM.Resources.CmdArgParser
 
     public static class Parser
     {
-
         public static List<string> Parse(Action<CmdArgConfigurator> configAction)
         {
             var config = new CmdArgConfiguration();
@@ -24,50 +23,49 @@ namespace RM.Resources.CmdArgParser
             var extraArgs = new List<string>();
             if (args.Length > 0)
             {
-                var argsWithoutLocation = args.Skip(1).ToArray();
-                if (argsWithoutLocation.Length > 0)
+                var argsWithoutLocation = args.Skip(1).ToList();
+
+                argsWithoutLocation.ForEach(argument =>
                 {
-                    foreach (var argument in argsWithoutLocation)
-                    {
-                        var argumentLC = argument.ToLower();
-                        var argParsed = false;
-                        foreach (var parameter in config.parameters)
+                    var argumentLC = argument.ToLower();
+                    var argParsed = false;
+                    config
+                        .parameters
+                        .ForEach(parameter =>
                         {
                             foreach (var key in parameter.GetKeys())
                             {
                                 if (argumentLC.StartsWith(key))
-                                {
-                                    var rightSide = argument.Substring(key.Length);
-                                    if (string.IsNullOrEmpty(rightSide))
-                                    {
-                                        parameter.GetValue()(string.Empty);
-                                        argParsed = true;
-                                    }
-                                    else if (rightSide.StartsWith(":"))
-                                    {
-                                        var value = rightSide.Substring(1);
-                                        parameter.GetValue()(value);
-                                        argParsed = true;
-                                    }
-                                }
+                                    TakeValuesFromArgument(ref parameter, argument, key, argParsed);
                             }
-                        }
-                        if (!argParsed)
-                        {
-                            extraArgs.Add(argument);
-                        }
-                    }
-                }
+                        });
+
+                    if (!argParsed)
+                        extraArgs.Add(argument);
+                });                
             }
             if (extraArgs.Count > 0 && config.ShowHelpOnExtraArguments)
             {
                 Console.WriteLine("Unrecognized arguments: ");
-                foreach (var extraArg in extraArgs)
-                {
-                    Console.WriteLine("Key: {0}", extraArg);
-                }
+                extraArgs.ForEach(extraArg => Console.WriteLine("Key: {0}", extraArg));
             }
             return extraArgs;
+        }
+
+        private static void TakeValuesFromArgument(ref CmdArgParam parameter, string argument, string key, bool argParsed)
+        {
+            var rightSide = argument.Substring(key.Length);
+            if (string.IsNullOrEmpty(rightSide))
+            {
+                parameter.GetValue()(string.Empty);
+                argParsed = true;
+            }
+            else if (rightSide.StartsWith(":"))
+            {
+                var value = rightSide.Substring(1);
+                parameter.GetValue()(value);
+                argParsed = true;
+            }
         }
     }
 }
