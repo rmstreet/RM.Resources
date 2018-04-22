@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RM.Resources.Specification"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RM.Resources.Schedules", "src\RM.Resources.Schedules\RM.Resources.Schedules.csproj", "{9143C14A-0CC9-402B-B801-DF9C8B841C32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RM.Resources.SchedulesConsoleTest", "test\RM.Resources.SchedulesConsoleTest\RM.Resources.SchedulesConsoleTest.csproj", "{044CA74C-E547-4147-9DC5-A32EE1197BE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{9143C14A-0CC9-402B-B801-DF9C8B841C32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9143C14A-0CC9-402B-B801-DF9C8B841C32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9143C14A-0CC9-402B-B801-DF9C8B841C32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{044CA74C-E547-4147-9DC5-A32EE1197BE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{044CA74C-E547-4147-9DC5-A32EE1197BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{044CA74C-E547-4147-9DC5-A32EE1197BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{044CA74C-E547-4147-9DC5-A32EE1197BE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{BF3BEB48-9400-41D8-B168-40802F2C8B32} = {7C44DFF1-9358-42C3-834E-6CD154253E2A}
 		{15D3CCF8-0FC3-47FA-A16E-78D0697A460F} = {7C44DFF1-9358-42C3-834E-6CD154253E2A}
 		{9143C14A-0CC9-402B-B801-DF9C8B841C32} = {7C44DFF1-9358-42C3-834E-6CD154253E2A}
+		{044CA74C-E547-4147-9DC5-A32EE1197BE2} = {BC39E106-23E5-4E98-88B9-81C3CB0B5ADC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {26C5359A-838F-4437-A6C6-81D995801305}
