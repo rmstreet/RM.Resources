@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RM.Resources.CmdArgParser.Utilities
+namespace RM.Resources.WindowsService.CmdArgParser.Utilities
 {
     using System;
 

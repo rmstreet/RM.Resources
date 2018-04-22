@@ -12,9 +12,4 @@
     <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\RM.Resources.Annotations\RM.Resources.Annotations.csproj" />
-    <ProjectReference Include="..\RM.Resources.CmdArgParser\RM.Resources.CmdArgParser.csproj" />
-  </ItemGroup>
-
 </Project>

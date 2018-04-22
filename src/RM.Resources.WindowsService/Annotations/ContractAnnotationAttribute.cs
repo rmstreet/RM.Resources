@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RM.Resources.Annotations
+﻿
+namespace RM.Resources.WindowsService.Annotations
 {
     using System;
 

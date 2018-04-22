@@ -47,19 +47,13 @@ namespace RM.Resources.WindowsService
             });
 
             if (string.IsNullOrEmpty(innerConfig.Name))
-            {
                 innerConfig.Name = typeof(SERVICE).FullName;
-            }
 
             if (string.IsNullOrEmpty(innerConfig.DisplayName))
-            {
                 innerConfig.DisplayName = innerConfig.Name;
-            }
 
             if (string.IsNullOrEmpty(innerConfig.Description))
-            {
                 innerConfig.Description = "No description";
-            }
 
             var hostConfiguration = new HostConfigurator<SERVICE>(innerConfig);
 
@@ -172,28 +166,23 @@ namespace RM.Resources.WindowsService
                         counter++;
                         string suffix = "th";
                         if (counter == 1)
-                        {
                             suffix = "st";
-                        }
                         else if (counter == 2)
-                        {
                             suffix = "nd";
-                        }
                         else if (counter == 3)
-                        {
                             suffix = "rd";
-                        }
+
                         Console.WriteLine("The specified service has been marked for deletion. Retrying {0}{1} time", counter, suffix);
                         Install(config, sc, counter);
                     }
                     else
                     {
-                        throw;
+                        throw e;
                     }
                 }
                 else
                 {
-                    throw;
+                    throw e;
                 }
             }
         }
@@ -203,18 +192,16 @@ namespace RM.Resources.WindowsService
             try
             {
                 if (!(sc.Status == ServiceControllerStatus.Stopped || sc.Status == ServiceControllerStatus.StopPending))
-                {
                     StopService(config, sc);
-                }
+                
                 new Win32ServiceManager().DeleteService(config.Name);
                 Console.WriteLine($@"Successfully unregistered service ""{config.Name}"" (""{config.Description}"")");
             }
             catch (Exception e)
             {
                 if (!e.Message.Contains("does not exist"))
-                {
-                    throw;
-                }
+                    throw e;
+
                 Console.WriteLine($@"Service ""{config.Name}"" (""{config.Description}"") does not exist. No action taken.");
             }
         }
@@ -228,9 +215,8 @@ namespace RM.Resources.WindowsService
                 Console.WriteLine($@"Successfully stopped service ""{config.Name}"" (""{config.Description}"")");
             }
             else
-            {
                 Console.WriteLine($@"Service ""{config.Name}"" (""{config.Description}"") is already stopped or stop is pending.");
-            }
+            
         }
 
         private static void StartService(HostConfiguration<SERVICE> config, ServiceController sc)
@@ -242,9 +228,8 @@ namespace RM.Resources.WindowsService
                 Console.WriteLine($@"Successfully started service ""{config.Name}"" (""{config.Description}"")");
             }
             else
-            {
                 Console.WriteLine($@"Service ""{config.Name}"" (""{config.Description}"") is already running or start is pending.");
-            }
+            
         }
 
         private static void Reinstall(HostConfiguration<SERVICE> config, ServiceController sc)

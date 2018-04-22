@@ -1,5 +1,5 @@
 ﻿
-namespace RM.Resources.CmdArgParser
+namespace RM.Resources.WindowsService.CmdArgParser
 {
     using System;
     using System.Collections.Generic;
@@ -40,9 +40,6 @@ namespace RM.Resources.CmdArgParser
 
             var split = Key.Split('|');
             return new List<string>(split);
-        }
-
-       
-        
+        }        
     }
 }

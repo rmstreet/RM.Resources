@@ -1,5 +1,5 @@
 ﻿
-namespace RM.Resources.CmdArgParser
+namespace RM.Resources.WindowsService.CmdArgParser
 {
     using System;
     using System.Collections.Generic;

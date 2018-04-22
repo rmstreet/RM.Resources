@@ -1,5 +1,5 @@
 ﻿
-namespace RM.Resources.Annotations
+namespace RM.Resources.WindowsService.Annotations
 {
     using System;
 
