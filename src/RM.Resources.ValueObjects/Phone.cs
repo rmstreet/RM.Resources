@@ -41,7 +41,7 @@ namespace RM.Resources.ValueObjects
 
         #region Parses
         public static implicit operator Phone(string input) => new Phone(input);
-        public static implicit operator string(Phone phone) => phone.Number;
+        public static implicit operator string(Phone phone) => phone?.Number ?? default(string);
         #endregion
 
         #region Overrides

@@ -65,9 +65,9 @@ namespace RM.Resources.ValueObjects
             return Invalid;
         }
         public static implicit operator Gender(char input) => input.ToString();
-        public static implicit operator string(Gender input) => input.Acronym.ToString();
-        public static implicit operator char(Gender input) => input.Acronym;
-        public static implicit operator byte? (Gender input) => input.Value;
+        public static implicit operator string(Gender input) => input?.Acronym.ToString() ?? default(string);
+        public static implicit operator char(Gender input) => input?.Acronym ?? default(char);
+        public static implicit operator byte? (Gender input) => input?.Value ?? default(byte?);
         #endregion
 
         #region Overrides

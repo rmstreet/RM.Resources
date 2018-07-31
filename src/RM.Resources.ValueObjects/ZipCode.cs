@@ -37,7 +37,7 @@ namespace RM.Resources.ValueObjects
         #region Parses
         public static implicit operator ZipCode(string input) => new ZipCode(input);
 
-        public static implicit operator string(ZipCode zipCode) => zipCode.Number;
+        public static implicit operator string(ZipCode zipCode) => zipCode?.Number ?? default(string);
         #endregion
 
         #region Overrides

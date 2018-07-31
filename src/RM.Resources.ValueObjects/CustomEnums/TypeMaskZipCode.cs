@@ -74,4 +74,4 @@ namespace RM.Resources.ValueObjects.CustomEnums
 
     }
 }
-}
+
