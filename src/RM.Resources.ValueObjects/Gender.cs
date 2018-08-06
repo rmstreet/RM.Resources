@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace RM.Resources.ValueObjects
 {
     public class Gender
@@ -21,7 +18,7 @@ namespace RM.Resources.ValueObjects
 
         #region Values
         public static Gender Male => new Gender('M', "Masculino", 255); // TODO: Gender - Adicionar internacionalização
-        public static Gender Famale => new Gender('F', "Feminino", 0); // TODO: Gender - Adicionar internacionalização
+        public static Gender Female => new Gender('F', "Feminino", 0); // TODO: Gender - Adicionar internacionalização
         public static Gender Invalid => new Gender(default(char), string.Empty, null);
         #endregion
 
@@ -60,7 +57,7 @@ namespace RM.Resources.ValueObjects
                 "female".Equals(str) ||
                 "f".Equals(str) ||
                 "0".Equals(str))
-                return Male;
+                return Female;
 
             return Invalid;
         }
